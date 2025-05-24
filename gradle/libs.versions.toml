@@ -1,13 +1,19 @@
 [versions]
-agp = "8.9.1"
-kotlin = "2.0.21"
+agp = "8.9.3"
+kotlin = "2.1.0"
 coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.9.0"
 activityCompose = "1.10.1"
-composeBom = "2024.09.00"
+composeBom = "2025.05.01"
+hilt-version="2.56.2"
+ksp-version="2.0.21-1.0.27"
+room-version="2.7.1"
+coroutine-version="1.7.3"
+navigation-version="2.9.0"
+hilt-navigation-version="1.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -25,8 +31,25 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 
+#hilt
+hilt-android={ group="com.google.dagger" , name="hilt-android",version.ref="hilt-version"}
+hilt-compiler={group="com.google.dagger", name="hilt-android-compiler",version.ref="hilt-version"}
+
+#Room DB
+room-android-runtime={group="androidx.room", name="room-runtime",version.ref="room-version"}
+room-ktx={group="androidx.room",name="room-ktx" , version.ref="room-version"}
+room-compiler={group="androidx.room", name="room-compiler", version.ref="room-version"}
+
+#Coroutine
+kotlin-coroutines={group="org.jetbrains.kotlinx",name="kotlinx-coroutines-android", version.ref="coroutine-version"}
+
+#Navigation
+compose-navigation={group="androidx.navigation",name="navigation-compose", version.ref="navigation-version"}
+compose-hilt-navigation={group="androidx.hilt",name="hilt-navigation-compose",version.ref="hilt-navigation-version"}
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-ksp ={id="com.google.devtools.ksp" ,version.ref="ksp-version"}
+kotlin-hilt={id="com.google.dagger.hilt.android", version.ref="hilt-version"}
 

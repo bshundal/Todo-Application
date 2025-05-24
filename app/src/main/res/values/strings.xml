@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Todo</string>
+    <string name="splash_title">Todo App</string>
+
+    <string name="no_account">Don\'t have an account?</string>
+    <string name="register_now">Register now</string>
+    <string name="register_title">Register</string>
+
+    <string name="user_name_title">User Name</string>
+    <string name="user_password_title">Password</string>
+    <string name="email_title">Email Id</string>
+    <string name="mobile_title">Mobile Number</string>
 </resources>
