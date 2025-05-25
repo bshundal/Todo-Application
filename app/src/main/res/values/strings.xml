@@ -10,4 +10,15 @@
     <string name="user_password_title">Password</string>
     <string name="email_title">Email Id</string>
     <string name="mobile_title">Mobile Number</string>
+
+
+    <string name="password_empty_error_msg">Password cannot be empty.</string>
+    <string name="password_length_error_msg">Password must be at least 5 characters long.</string>
+    <string name="username_empty_error_msg">User Name cannot be empty.</string>
+    <string name="mobile_number_empty_error_msg">Mobile number cannot be empty.</string>
+    <string name="mobile_number_length_error_msg">Mobile number must be 10 digits long.</string>
+    <string name="mobile_number_format_error_msg">Mobile number must start with 6, 7, 8, or 9.</string>
+    <string name="email_id_empty_error_msg">Email cannot be empty.</string>
+    <string name="email_id_format_error_msg">Invalid email format.</string>
+
 </resources>

@@ -23,13 +23,19 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.rammu.todo.R
+import com.rammu.todo.presentation.registration.RegistrationFormEvents
+import com.rammu.todo.presentation.registration.RegistrationUiState
 import com.rammu.todo.uicomponent.TodoAppButton
 import com.rammu.todo.uicomponent.TodoAppEditTextView
 import com.rammu.todo.uicomponent.TodoAppSpacer
 import com.rammu.todo.uicomponent.TodoAppTextView
 
 @Composable
-fun LoginScreen(modifier: Modifier= Modifier, onNavigateToRegistration:()-> Unit, viewModel: LoginViewModel= hiltViewModel()){
+fun LoginScreen(uiState: LoginUiState,
+                onEvent:(LoginEvents)-> Unit,
+                modifier: Modifier= Modifier,
+                onNavigateToRegistration:()-> Unit,
+                viewModel: LoginViewModel= hiltViewModel()){
 
     Scaffold {paddingValues ->
         Column(
@@ -41,25 +47,32 @@ fun LoginScreen(modifier: Modifier= Modifier, onNavigateToRegistration:()-> Unit
             TodoAppSpacer(150.dp)
             TodoAppEditTextView(
                 modifier =modifier.padding(horizontal = 16.dp, vertical = 4.dp),
-                value = viewModel.userName,
-                isError = false,
+                value = uiState.userMobileNo,
+                isError = uiState.userMobileNoError,
                 labelText = "User Name",
                 keyboardType = KeyboardType.Text,
-                onValueChange = {}
+                supportingText = uiState.userMobileNoErrorMag,
+                onValueChange = {value->
+                    onEvent(LoginEvents.OnMobileChange(value))
+                }
             )
 
             TodoAppEditTextView(
                 modifier =modifier.padding(horizontal = 16.dp, vertical = 4.dp),
-                value = viewModel.userName,
-                isError = false,
+                value = uiState.userPassword,
+                isError = uiState.userPasswordError,
                 labelText = "User Name",
                 keyboardType = KeyboardType.Text,
-                onValueChange = {}
+                supportingText = uiState.userPasswordErrorMsg,
+                onValueChange = {value->
+                    onEvent(LoginEvents.OnPasswordChange(value))
+                }
+
             )
 
             TodoAppSpacer(40.dp)
             TodoAppButton(btnTxt = "Login") {
-
+               onEvent(LoginEvents.OnSubmit)
             }
 
             Row(modifier = Modifier.fillMaxWidth(),

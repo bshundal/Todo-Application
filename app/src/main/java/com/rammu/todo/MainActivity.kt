@@ -5,15 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+
 import com.rammu.todo.navigation.NavigationGraph
 import com.rammu.todo.navigation.Screens
-import com.rammu.todo.ui.theme.TodoTheme
+import com.rammu.todo.ui.theme.TodoAppTheme
+
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,7 +21,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            NavigationGraph(startDestination = Screens.SPLASH_SCREEN)
+            TodoAppTheme { // Apply your black and orange theme here
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background // This will be your LightGray100 or Black800
+                ) {
+                    NavigationGraph(startDestination = Screens.SPLASH_SCREEN)
+                }
+            }
+
         }
     }
 }

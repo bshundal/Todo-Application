@@ -5,9 +5,9 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavBackStackEntry
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.rammu.todo.presentation.registration.RegistrationFormEvents
 
 
 @Composable
@@ -44,6 +44,8 @@ private val currentRoute: String ?
          navController.navigate(Screens.REGISTRATION_SCREEN)
       }
     }
+
+   
 
     fun navigateToHomeScreen(from: NavBackStackEntry){
         if(shouldNavigate(from)){
