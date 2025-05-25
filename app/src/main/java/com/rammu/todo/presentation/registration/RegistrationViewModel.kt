@@ -2,7 +2,7 @@ package com.rammu.todo.presentation.registration
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rammu.todo.data.repository.TodoAppRepository
+import com.rammu.todo.data.repository.UsersRepository
 import com.rammu.todo.room.tables.Users
 import com.rammu.todo.validations.usecase.ValidateEmailUseCase
 import com.rammu.todo.validations.usecase.ValidateMobileNumberUseCase
@@ -22,7 +22,7 @@ class RegistrationViewModel @Inject constructor(
     private val validateMobileNumberUseCase: ValidateMobileNumberUseCase,
     private val validateEmailUseCase: ValidateEmailUseCase,
     private val validatePasswordUseCase: ValidatePasswordUseCase,
-    private val todoAppRepository: TodoAppRepository
+    private val usersRepository: UsersRepository
 ) : ViewModel() {
     val _uiState = MutableStateFlow(RegistrationUiState())
     val uiState: StateFlow<RegistrationUiState> = _uiState.asStateFlow()
@@ -70,7 +70,7 @@ class RegistrationViewModel @Inject constructor(
         viewModelScope.launch {
             uiState.value.let {ui->
                 if(!ui.userNameError && !ui.userMobileNoError && !ui.userEmailError && !ui.userPasswordError){
-                    todoAppRepository.insertUser(bindUserRequest(ui))
+                    usersRepository.insertUser(bindUserRequest(ui))
                 }else{
 
                 }
